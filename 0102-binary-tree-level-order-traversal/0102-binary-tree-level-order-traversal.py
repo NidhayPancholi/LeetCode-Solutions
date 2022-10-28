@@ -8,8 +8,6 @@ class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         o=[]
         def rec(queue):
-            if not queue:
-                return 
             temp=[]
             new=[]
             for x in queue:
@@ -17,11 +15,12 @@ class Solution:
                     temp.append(x.val)
                     new.append(x.left)
                     new.append(x.right)
+            if not temp:
+                return 
             o.append(temp)
             return rec(new)
         
         rec([root])
-        o.pop()
         return o
         
         
